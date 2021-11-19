@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script src='data.js'></script>
+<script src='functions.js'></script>
+<script src='solution.js'></script>
+<script>
+    function test(task, excepted, received, show = true) {
+        if (JSON.stringify(excepted) === JSON.stringify(received)) {
+            console.log(`%c Task ${task} success`, 'color: #28a745')
+        } else {
+            console.log(`%c Task ${task} failed`, 'color: #dc3545')
+            if (show)
+                console.log('%c Excepted: ', 'color: #28a745', excepted)
+            console.log('%c Received: ', 'color: #dc3545', received)
+        }
+        console.log('---')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        test(1, averageAmount, averageAmountSpentPerShop(shops))
+        test(2, sortShops, sortShopsByTransactionsSum(shops))
+        test(3, image, imageIntoBlackAndWhite(), false)
+    })
+</script>
+</body>
+</html>
